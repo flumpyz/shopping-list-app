@@ -7,6 +7,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    text-align: left;
 }
 
 .input-container {
@@ -17,11 +19,16 @@
     align-items: center;
 }
 
-input {
+input[type="text"] {
     width: 270px;
     height: 25px;
 
     font-size: 18px;
+}
+
+input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
 }
 
 button {
@@ -33,5 +40,6 @@ button {
 }
 
 span {
-    font-size: 22px;
+    width: 250px;
+    font-size: 26px;
 }
