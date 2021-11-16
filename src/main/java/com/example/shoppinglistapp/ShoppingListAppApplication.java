@@ -2,12 +2,14 @@ package com.example.shoppinglistapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class ShoppingListAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ShoppingListAppApplication.class, args);
+		ApplicationContext context = SpringApplication.run(ShoppingListAppApplication.class);
+//		SpringApplication.run(ShoppingListAppApplication.class, args);
 	}
 
 }

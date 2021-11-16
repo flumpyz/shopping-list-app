@@ -1,0 +1,37 @@
+.add-button {
+}
+
+.item-container {
+    width: 300px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-container {
+    width: 300px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input {
+    width: 270px;
+    height: 25px;
+
+    font-size: 18px;
+}
+
+button {
+    width: 25px;
+    height: 25px;
+
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+span {
+    font-size: 22px;
+}
