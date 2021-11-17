@@ -1,4 +1,9 @@
 .add-button {
+    background: green;
+}
+
+.delete-button {
+    background: red;
 }
 
 .item-container {
@@ -29,6 +34,9 @@ input[type="text"] {
 input[type="checkbox"] {
     width: 25px;
     height: 25px;
+
+    margin-left: 0;
+    margin-right: 5px;
 }
 
 button {
@@ -37,9 +45,23 @@ button {
 
     margin-left: 5px;
     font-size: 18px;
+
+    box-shadow: none;
+    border: 1px solid dimgrey;
+    border-radius: 5px;
+    color: WhiteSmoke;
 }
 
 span {
     width: 250px;
     font-size: 26px;
 }
+
+.strikethrough-line {
+    text-decoration: line-through;
+}
+
+form {
+    display: flex;
+}
+
