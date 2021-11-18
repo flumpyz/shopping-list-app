@@ -48,4 +48,13 @@ public class MainController {
         return new RedirectView("index");
     }
 
+    @PostMapping(path = "/update")
+    public RedirectView updateModel(@CookieValue(value = "JSESSIONID", defaultValue = "") String sessionKey,
+                                    @RequestBody HashMap<String, String> body) throws DBException {
+        Long number = Long.parseLong(body.get("purchaseId"));
+        Boolean isBought = Boolean.parseBoolean(body.get("isBought"));
+        shoppingService.update(number, isBought);
+        return new RedirectView("index");
+    }
+
 }

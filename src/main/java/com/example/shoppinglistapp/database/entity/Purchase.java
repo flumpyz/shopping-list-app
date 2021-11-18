@@ -64,7 +64,7 @@ public class Purchase implements Serializable {
         return isBought;
     }
 
-    public void setState(boolean isBought) {
+    public void setIsBought(boolean isBought) {
         this.isBought = isBought;
     }
 }

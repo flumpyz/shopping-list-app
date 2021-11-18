@@ -28,6 +28,10 @@ public class PurchaseDAO {
         return (Long) session.save(purchase);
     }
 
+    public void updatePurchase(Purchase purchase) {
+        session.update(purchase);
+    }
+
     public void deletePurchase(Purchase purchase) {
         session.delete(purchase);
     }

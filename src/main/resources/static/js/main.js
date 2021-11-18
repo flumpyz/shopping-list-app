@@ -32,7 +32,7 @@ function writeItem() {
 }
 
 function removeItem(event) {
-    let noteId = event.currentTarget.id;
+    let noteId = event.currentTarget.parentNode.id;
 
     event.currentTarget.parentNode.remove();
 
@@ -51,11 +51,33 @@ function removeItem(event) {
 }
 
 function updateText(event) {
-    let text = event.currentTarget.nextSibling.innerText;
 
-    if (text.style.textDecoration === "line-through") {
-        text.style.textDecoration = "none";
-    } else {
-        text.style.textDecoration = "line-through";
+    let noteId = event.currentTarget.parentNode.id;
+    let parentNode = event.currentTarget.parentNode;
+    let text = event.currentTarget.parentNode;
+
+
+    for (let i = 0; i < parentNode.children.length; i++) {
+        if (parentNode.children[i].tagName === 'SPAN') {
+            text = parentNode.children[i];
+        }
+        console.log(parentNode.children[i].tagName);
     }
+
+    text.classList.toggle('strikethrough-line');
+    let purchased = text.classList.contains('strikethrough-line');
+
+    let originPath = window.location.origin;
+    fetch(`${originPath}/update`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({
+                purchaseId: noteId,
+                isBought: purchased
+            }
+        )
+    })
+    // text.classList.toggle('strikethrough-line');
 }

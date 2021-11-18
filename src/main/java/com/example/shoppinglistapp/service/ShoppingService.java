@@ -23,6 +23,10 @@ public class ShoppingService {
         return note;
     }
 
+    public void update(Long noteId, Boolean isBought) throws DBException {
+        databaseService.updatePurchase(noteId, isBought);
+    }
+
     public void delete(Long noteId) throws DBException {
         databaseService.deletePurchase(noteId);
     }

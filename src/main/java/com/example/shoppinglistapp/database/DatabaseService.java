@@ -69,6 +69,23 @@ public class DatabaseService {
         }
     }
 
+    public void updatePurchase(Long noteId, Boolean isBought) throws DBException {
+        try {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            PurchaseDAO dao = new PurchaseDAO(session);
+
+            Purchase purchase = dao.get(noteId);
+            purchase.setIsBought(isBought);
+            dao.updatePurchase(purchase);
+
+            transaction.commit();
+            session.close();
+        } catch (HibernateException e) {
+            throw new DBException(e);
+        }
+    }
+
     public void deletePurchase(Long noteId) throws DBException {
         try {
             Session session = sessionFactory.openSession();

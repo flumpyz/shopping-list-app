@@ -10,12 +10,12 @@
 <body>
 <h1>Список покупок:</h1>
 <div id="container" class="container">
-    <div class="item-container" th:each="note : ${notes}">
+    <div class="item-container" th:each="note : ${notes}" th:id="${note.getId()}">
         <input type="checkbox" onchange="updateText(event)" th:if="${note.getIsBought()}" checked>
-        <input type="checkbox" onchange="updateText(event)" th:if="${!note.getIsBought()}" class="line">
-        <span th:text="${note.getText()}" th:if="${note.getIsBought()}" class="strikethrough-line"></span>
-        <span th:text="${note.getText()}" th:if="${!note.getIsBought()}" class="line"></span>
-        <button th:id="${note.getId()}" class="delete-button" onclick="removeItem(event)">×</button>
+        <input type="checkbox" onchange="updateText(event)" th:if="${!note.getIsBought()}">
+        <span th:text="${note.getText()}" th:if="${note.getIsBought()}" class="text-line strikethrough-line"></span>
+        <span th:text="${note.getText()}" th:if="${!note.getIsBought()}" class="text-line line"></span>
+        <button class="delete-button" onclick="removeItem(event)">×</button>
     </div>
 </div>
 <div id="input-container" class="input-container">
