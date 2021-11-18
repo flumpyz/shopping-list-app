@@ -1,36 +1,3 @@
-function writeItem() {
-    let container = document.getElementById("container");
-
-    let div = document.createElement("div");
-
-    let checkbox = document.createElement("input");
-    let span = document.createElement("span");
-    let button = document.createElement("button");
-
-    let inputText = document.getElementById("input-item");
-    let text = inputText.value;
-    span.innerText = text;
-
-    checkbox.type = "checkbox";
-    checkbox.setAttribute("onchange", "updateText(event)");
-
-    button.className = "delete-button";
-    button.innerText = "×";
-    button.setAttribute("onclick", "removeItem(event)");
-
-    div.className = "item-container";
-
-    div.append(checkbox);
-    div.append(span);
-    div.append(button);
-
-    container.append(div);
-
-    inputText.value = "";
-
-
-}
-
 function removeItem(event) {
     let noteId = event.currentTarget.parentNode.id;
 
@@ -79,5 +46,4 @@ function updateText(event) {
             }
         )
     })
-    // text.classList.toggle('strikethrough-line');
 }
