@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Shopping List</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 <h1>Список покупок:</h1>
 <div id="container" class="container">
     <div class="item-container" th:each="note : ${notes}" th:id="${note.getId()}">
-        <input type="checkbox" onchange="updateText(event)" th:if="${note.getIsBought()}" checked>
-        <input type="checkbox" onchange="updateText(event)" th:if="${!note.getIsBought()}">
+        <input checked="true" onchange="updateText(event)" th:if="${note.getIsBought()}" type="checkbox"/>
+        <input type="checkbox" onchange="updateText(event)" th:if="${!note.getIsBought()}"/>
         <span th:text="${note.getText()}" th:if="${note.getIsBought()}" class="text-line strikethrough-line"></span>
         <span th:text="${note.getText()}" th:if="${!note.getIsBought()}" class="text-line line"></span>
         <button class="delete-button" onclick="removeItem(event)">×</button>
@@ -21,7 +21,7 @@
 <div id="input-container" class="input-container">
     <form action="index" method="post">
         <div>
-            <input id="inputItem" name="inputItem" type="text">
+            <input id="inputItem" name="inputItem" type="text"/>
         </div>
         <button class="add-button" type="submit">+</button>
     </form>

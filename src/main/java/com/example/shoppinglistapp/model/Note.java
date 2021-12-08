@@ -20,9 +20,10 @@ public class Note {
         return isBought;
     }
 
-    public void setNoteState(boolean isBought) {
+    public void setIsBought(boolean isBought) {
         this.isBought = isBought;
     }
+
 
     public String getSessionId() {
         return sessionId;

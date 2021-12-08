@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,25 +18,26 @@ import java.util.List;
 @Service
 public class DatabaseService {
     private final SessionFactory sessionFactory;
+    private final Environment environment;
 
-    public DatabaseService() {
+    public DatabaseService(Environment environment) {
+        this.environment = environment;
         Configuration configuration = getMySqlConfiguration();
         sessionFactory = createSessionFactory(configuration);
     }
 
     private Configuration getMySqlConfiguration() {
-        String connectionString = "jdbc:mysql://localhost:3306/web_application";
+//        String connectionString = "jdbc:mysql://localhost:3306/web_application";
 
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(Purchase.class);
 
-        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-        configuration.setProperty("hibernate.connection.url", connectionString);
-        configuration.setProperty("hibernate.connection.username", "root");
-        configuration.setProperty("hibernate.connection.password", "admin1234");
-        configuration.setProperty("hibernate.show_sql", "false");
-        configuration.setProperty("hibernate.hbm2ddl.auto", "update");
+        configuration.setProperty("hibernate.connection.url", environment.getProperty("spring.datasource.url"));
+        configuration.setProperty("hibernate.dialect", environment.getProperty("spring.jpa.database-platform"));
+        configuration.setProperty("hibernate.connection.driver_class", environment.getProperty("spring.datasource.driver-class-name"));
+        configuration.setProperty("hibernate.connection.username", environment.getProperty("spring.datasource.username"));
+        configuration.setProperty("hibernate.connection.password", environment.getProperty("spring.datasource.password"));
+        configuration.setProperty("hibernate.hbm2ddl.auto", environment.getProperty("spring.jpa.hibernate.ddl-auto"));
 
         return configuration;
     }
